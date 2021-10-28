@@ -2,11 +2,9 @@ import React from "react";
 import { BsBell, BsBellFill, BsSearch } from "react-icons/bs";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { RiMic2Line } from "react-icons/ri";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../features/themeSlicer";
 import { AiFillMessage, AiOutlineMessage } from "react-icons/ai";
 function TopBar() {
-  const theme = useSelector(selectTheme);
+  const theme = localStorage.getItem('theme');
   return (
     <div className="flex justify-between items-center sm:px-5   md:px-10">
 

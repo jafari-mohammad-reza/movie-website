@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   MdCalendarToday,
   MdList,
@@ -9,33 +9,38 @@ import {
 import { BsLightbulb, BsLightbulbFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTheme, changeTheme } from "../features/themeSlicer";
 import { AiOutlineBars } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import useDarkTheme from "../hooks/useDarkTheme";
 function SideBar() {
-  //! to do  # add theme switcher #
-
   const [activePage, setActivePage] = useState();
-  const [showBar, setShowbar] = useState(false);
-  const theme = useSelector(selectTheme);
-  const dispatch = useDispatch();
-  const checkWindowSize = () => {
-    if(window.innerWidth > 760){
-      setShowbar(false)
+  const [showBar, setShowBar] = useState(false);
+  const [colorTheme, setCurrentTheme] = useDarkTheme();
+  const checkWindowSize = useCallback(() => {
+    if (window.innerWidth > 760) {
+      if (showBar) {
+        setShowBar(false);
+      }
     }
-  }
+  }, [showBar]);
+  const closeBarByWindowsClicking = useCallback(() => {
+    if (showBar) {
+      setShowBar(false);
+    }
+  }, [showBar]);
   useEffect(() => {
-    window.addEventListener('resize' , checkWindowSize)
+    window.addEventListener("click", closeBarByWindowsClicking);
+    window.addEventListener("resize", checkWindowSize);
     return () => {
-      window.removeEventListener('resize' , checkWindowSize)
-    }
-  } , []);
+      window.removeEventListener("resize", checkWindowSize);
+      window.removeEventListener("click", closeBarByWindowsClicking);
+    };
+  }, [checkWindowSize, closeBarByWindowsClicking]);
   return (
     <>
       <AiOutlineBars
         className="text-xl block mt-8 ml-10 hover:text-red-600 transition duration-500 transform hover:scale-150 md:hidden cursor-pointer"
-        onClick={() => setShowbar(true)}
+        onClick={() => setShowBar(true)}
       />
 
       <div
@@ -150,23 +155,16 @@ function SideBar() {
           </div>
         </div>
 
-        <div className="text-2xl bg-red-600 w-3/6    rounded-2xl py-3  flex justify-center place-self-auto   ">
-          {theme === "light" ? (
-            <BsLightbulb
-              className="switcher  transform hover:scale-150"
-              onClick={() => {
-                dispatch(changeTheme("dark"));
-                localStorage.setItem("theme", "dark");
-              }}
-            />
+        <div
+          className="text-2xl bg-red-600 w-3/6    rounded-2xl py-3  flex justify-center place-self-auto   "
+          onClick={() => {
+            setCurrentTheme(colorTheme);
+          }}
+        >
+          {colorTheme === "light" ? (
+            <BsLightbulb className="switcher  transform hover:scale-150" />
           ) : (
-            <BsLightbulbFill
-              className="switcher transform hover:scale-150"
-              onClick={() => {
-                dispatch(changeTheme("light"));
-                localStorage.setItem("theme", "light");
-              }}
-            />
+            <BsLightbulbFill className="switcher transform hover:scale-150" />
           )}
         </div>
       </div>
