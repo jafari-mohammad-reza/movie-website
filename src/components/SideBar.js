@@ -13,7 +13,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import useDarkTheme from "../hooks/useDarkTheme";
 function SideBar() {
-  const [activePage, setActivePage] = useState();
+  const [activePage, setActivePage] = useState('Browse');
   const [showBar, setShowBar] = useState(false);
   const [colorTheme, setCurrentTheme] = useDarkTheme();
   const checkWindowSize = useCallback(() => {
@@ -58,7 +58,7 @@ function SideBar() {
         </Link>
         <div className="flex flex-col space-y-2.5 py-2 ">
           <h3 className="font-extrabold text-lg mb-3 md:text-xl">Menu</h3>
-          <div
+          <Link to='/'
             onClick={() => setActivePage("Browse")}
             className="flex font-bold  items-center   cursor-pointer  space-x-2 "
           >
@@ -69,7 +69,7 @@ function SideBar() {
             <p className={`${activePage === "Browse" && "text-red-600"}`}>
               Browse
             </p>
-          </div>
+          </Link>
           <div
             onClick={() => setActivePage("Watch List")}
             className="flex font-bold  items-center    cursor-pointer  space-x-2 "
