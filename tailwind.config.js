@@ -16,7 +16,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backdrop: ["hover"],
+    },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-textshadow")],
 };

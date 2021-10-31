@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="grid grid-cols-5 overflow-x-hidden  bg-lightTheme-primaryBackGround  max-h-full h-screen    dark:bg-darkTheme-primaryBackGround  text-lightTheme-primaryColor dark:text-darkTheme-primaryColor">
       {/*//! side bar */}
-      <div className="absolute  md:static col-span-1  md:border-r-2 border-lightTheme-primaryColor dark:border-darkTheme-primaryColor">
+      <div className="absolute  top-0.5 -left-1  md:static col-span-1  md:border-r-2 border-lightTheme-primaryColor dark:border-darkTheme-primaryColor">
         <SideBar />
       </div>
       {/*//! main content */}

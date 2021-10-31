@@ -39,7 +39,7 @@ function SideBar() {
   return (
     <>
       <AiOutlineBars
-        className="text-xl block mt-8 ml-10 hover:text-red-600 transition duration-500 transform hover:scale-150 md:hidden cursor-pointer"
+        className="fixed text-xl block mt-8 ml-10 hover:text-red-600 transition duration-500 transform hover:scale-150 md:hidden cursor-pointer"
         onClick={() => setShowBar(true)}
       />
 
