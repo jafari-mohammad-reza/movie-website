@@ -7,6 +7,25 @@
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 1rem;
+  /* margin-top: 10px; */
+  scroll-margin-top: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e50419;
+  border: 1px solid #f8f9ff;
+  border-radius: 50vw;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f5021b;
+}
+::-webkit-scrollbar-track {
+  background: #f8f9ff;
+  border-radius: 50vw;
+  /* scroll-margin-block: 0.5rem; */
+}
+
 .banner {
   background-position: center !important;
   background-repeat: no-repeat !important ;
@@ -19,4 +38,15 @@
   /* cursor-pointer transition-all  transform eas e-in-out duration-200 hover:scale-125 */
   cursor: pointer;
   transition: all 150ms ease-in-out;
+}
+
+.rowItem {
+  background-position: center center !important ;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  object-fit: cover !important;
+  background-clip: border-box;
+}
+body {
+  scrollbar-color: red;
 }
