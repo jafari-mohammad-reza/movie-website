@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import BrowsePage from "./Pages/BrowsePage";
 import SideBar from "./components/SideBar";
 import TopBar from "./components/TopBar";
+import WatchListPage from "./Pages/watchListpage";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <div className="col-span-5 md:col-span-4  py-5">
           <TopBar />
           <Switch>
-            <Route path="/" component={BrowsePage} />
+            <Route exact path="/" component={BrowsePage} />
+            <Route path="/list" component={WatchListPage} />
           </Switch>
         </div>
       </div>

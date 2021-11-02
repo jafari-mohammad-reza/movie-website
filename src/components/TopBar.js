@@ -41,7 +41,7 @@ function TopBar() {
         <div className="flex text-base cursor-pointer w-10  h-10 md:w-16 md:h-16 md:text-lg items-center justify-center space-x-2  ">
           <img
             className="rounded-full  border-2 p-2"
-            src="https://th.bing.com/th/id/R.2a874410ce5fade0e3d7a847e746955d?rik=jZoxTLcVx%2bZOLw&riu=http%3a%2f%2fen.opensuse.org%2fimages%2f0%2f0b%2fIcon-user.png&ehk=mDYKCjN0SrtVBsdg%2ftf8veV%2fX7xr%2bSq5gSwynzXmSYw%3d&risl=&pid=ImgRaw&r=0"
+            src="https://www.bing.com/th/id/OIP.KodEEM5freDj16hH50aVXQAAAA?pid=ImgDet&rs=1"
             alt="user profile"
           />
         </div>

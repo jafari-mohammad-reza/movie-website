@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import requests from "../api/requests";
+import { addToList } from "../features/watchListSlicer";
 export default function SuggestBanner() {
   const [movie, setMovie] = useState([]);
+  const dispatch = useDispatch()
   const truncate = (text, n) => {
     return text?.length > n ? text.substr(n - 1) + "..." : text;
   };
@@ -38,14 +41,14 @@ export default function SuggestBanner() {
         </div>
         <div className="flex text-sm space-x-5 items-center">
           <p className="text-lg font-semibold">Score</p>
-          <p>{movie.vote_average}</p>
+          <p>{movie.vote_average || 'not scored' }</p>
           {/* <p>seasons count</p> */}
         </div>
         <div className="flex space-x-10 text-base md:text-xl lg:text-xl ">
           <button className="bg-red-600 border-none outline-none rounded-2xl font-bold py-3 px-3  md:px-6  ">
             Watch
           </button>
-          <button className=" text-center border-none outline-none  bg-gradient-to-br from-gray-300  to-transparent filter bg-opacity-20 shadow-xl   rounded-2xl font-bold py-3 px-6 ">
+          <button onClick={() => dispatch(addToList(movie))} className=" text-center border-none outline-none  bg-gradient-to-br from-gray-300  to-transparent filter bg-opacity-20 shadow-xl   rounded-2xl font-bold py-3 px-6 ">
             +
           </button>
         </div>

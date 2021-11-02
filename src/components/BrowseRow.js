@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { MdPlaylistAddCheck, MdDoNotDisturb } from "react-icons/md";
+import { addToList } from "../features/watchListSlicer";
+import { useDispatch } from "react-redux";
+import { stringify } from "postcss";
 const BrowseRow = ({ title, categoryUrl }) => {
+  const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const fetchRequest = async () => {
@@ -21,16 +25,16 @@ const BrowseRow = ({ title, categoryUrl }) => {
   }, []);
   return (
     <>
-      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold md:font-bold lg:font-extrabold  pt-10 pb-16">
+      {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold md:font-bold lg:font-extrabold  pt-10 pb-16 ">
         {" "}
         {title}
-      </h1>
-      <div className="h-96 overflow-x-scroll overflow-y-hidden my-10">
-        <div className="flex w-max ">
+      </h1> */}
+      <div className=" overflow-x-scroll overflow-y-hidden  ">
+        <div className="flex w-max mb-2 ">
           {movies.map((movie) => {
             return (
               <div
-                className="rowItem w-64 h-96 mr-5 group rounded-xl  text-darkTheme-primaryColor "
+                className="rowItem w-64 h-96 mr-5  group rounded-xl  text-darkTheme-primaryColor "
                 key={movie.id}
                 style={{
                   background: `url("https://image.tmdb.org/t/p/original/${
@@ -47,7 +51,12 @@ const BrowseRow = ({ title, categoryUrl }) => {
 duration-700 "
                   >
                     <FaRegPlayCircle className="transform  transition  duration-300 hover:scale-150" />
-                    <MdPlaylistAddCheck className="transform  transition  duration-300 hover:scale-150" />
+                    <MdPlaylistAddCheck
+                      onClick={() => {
+                        dispatch(addToList(movie));
+                      }}
+                      className="transform  transition  duration-300 hover:scale-150"
+                    />
                     {/* <MdMoreHoriz className="" /> */}
                     <MdDoNotDisturb className="transform  transition  duration-300 hover:scale-150" />
                   </div>

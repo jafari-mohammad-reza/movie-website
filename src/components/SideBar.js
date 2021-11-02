@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   MdCalendarToday,
   MdList,
@@ -12,10 +13,14 @@ import { GiPartyPopper } from "react-icons/gi";
 import { AiOutlineBars } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import useDarkTheme from "../hooks/useDarkTheme";
+import { useSelector } from "react-redux";
+import { selectList } from "../features/watchListSlicer";
 function SideBar() {
-  const [activePage, setActivePage] = useState('Browse');
+  const location = useLocation();
+  const [activePage, setActivePage] = useState(location.pathname);
   const [showBar, setShowBar] = useState(false);
   const [colorTheme, setCurrentTheme] = useDarkTheme();
+  const listSelector = useSelector(selectList);
   const checkWindowSize = useCallback(() => {
     if (window.innerWidth > 760) {
       if (showBar) {
@@ -29,13 +34,14 @@ function SideBar() {
     }
   }, [showBar]);
   useEffect(() => {
+    setActivePage(location.pathname);
     window.addEventListener("click", closeBarByWindowsClicking);
     window.addEventListener("resize", checkWindowSize);
     return () => {
       window.removeEventListener("resize", checkWindowSize);
       window.removeEventListener("click", closeBarByWindowsClicking);
     };
-  }, [checkWindowSize, closeBarByWindowsClicking]);
+  }, [checkWindowSize, closeBarByWindowsClicking, location.pathname]);
   return (
     <>
       <AiOutlineBars
@@ -58,100 +64,95 @@ function SideBar() {
         </Link>
         <div className="flex flex-col space-y-2.5 py-2 ">
           <h3 className="font-extrabold text-lg mb-3 md:text-xl">Menu</h3>
-          <Link to='/'
-            onClick={() => setActivePage("Browse")}
+          <Link
+            to="/"
             className="flex font-bold  items-center   cursor-pointer  space-x-2 "
           >
-            {activePage === "Browse" && (
+            {activePage === "/" && (
               <hr className="border-none transform rotate-180 md:rotate-90   lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600  bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <MdOutlineOpenInBrowser className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "Browse" && "text-red-600"}`}>
+            <Link to="/" className={`${activePage === "/" && "text-red-600"}`}>
               Browse
-            </p>
+            </Link>
           </Link>
-          <div
-            onClick={() => setActivePage("Watch List")}
-            className="flex font-bold  items-center    cursor-pointer  space-x-2 "
-          >
-            {activePage === "Watch List" && (
+          <div className="flex font-bold  items-center  relative  cursor-pointer  space-x-2 ">
+            {activePage === "/list" && (
               <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <MdList className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "Watch List" && "text-red-600"}`}>
-              Watch List
-            </p>
+            <Link
+              to="list"
+              className={`${activePage === "/list" && "text-red-600"}`}
+            >
+              Watch List{" "}
+              <span className="absolute -top-4 md:right-1 bg-lightTheme-primaryColor dark:bg-darkTheme-primaryColor rounded-full text-xs py-1 px-2 dark:text-red-600 text-darkTheme-primaryColor">
+                {listSelector.length}
+              </span>
+            </Link>
           </div>
-          <div
-            onClick={() => setActivePage("ComingSoon")}
+          <Link
+            to="/ComingSoon"
             className="flex font-bold items-center    cursor-pointer space-x-2 "
           >
-            {activePage === "ComingSoon" && (
+            {activePage === "/ComingSoon" && (
               <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <MdCalendarToday className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "ComingSoon" && "text-red-600"}`}>
+            <p className={`${activePage === "/ComingSoon" && "text-red-600"}`}>
               Coming Soon
             </p>
-          </div>
+          </Link>
         </div>
 
         {/* <--!! Social Part  */}
         <div className="flex flex-col   space-y-6 py-2">
           <h3 className="font-extrabold text-lg mb-3 md:text-xl">Social</h3>
-          <div
-            onClick={() => setActivePage("Friends")}
+          <Link
+            to="/Friends"
             className="flex font-bold  items-center    cursor-pointer space-x-2 "
           >
-            {activePage === "Friends" && (
+            {activePage === "/Friends" && (
               <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <FaUserFriends className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "Friends" && "text-red-600"}`}>
+            <p className={`${activePage === "/Friends" && "text-red-600"}`}>
               Friends
             </p>
-          </div>
+          </Link>
 
-          <div
-            onClick={() => setActivePage("Parties")}
+          <Link
+            to="/Parties"
             className="flex font-bold items-center    cursor-pointer space-x-2 "
           >
-            {activePage === "Parties" && (
+            {activePage === "/Parties" && (
               <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <GiPartyPopper className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "Parties" && "text-red-600"}`}>
+            <p className={`${activePage === "/Parties" && "text-red-600"}`}>
               Parties
             </p>
-          </div>
+          </Link>
         </div>
         {/* <--!! settings Part  */}
         <div className="flex flex-col   space-y-6 py-2">
           <h3 className="font-extrabold text-lg mb-3 md:text-xl">General</h3>
-          <div
-            onClick={() => setActivePage("Settings")}
+          <Link
+            to="/Settings"
             className="flex font-bold  items-center    cursor-pointer space-x-2 "
           >
-            {activePage === "Settings" && (
+            {activePage === "/Settings" && (
               <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
             )}
             <MdOutlineSettings className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "Settings" && "text-red-600"}`}>
+            <p className={`${activePage === "/Settings" && "text-red-600"}`}>
               Settings
             </p>
-          </div>
+          </Link>
 
-          <div
-            onClick={() => setActivePage("LogOut")}
-            className="flex font-bold items-center    cursor-pointer space-x-2 "
-          >
-            {activePage === "LogOut" && (
-              <hr className="border-none transform rotate-180 md:rotate-90 lg:-ml-14 -ml-7 h-6 md:-ml-8  text-red-600 bg-red-600 rounded-full md:h-2 w-3 md:w-8 lg:w-10" />
-            )}
+          <div className="flex font-bold items-center    cursor-pointer space-x-2 ">
             <MdOutlineLogout className=" text-2xl font-extrabold hover:text-red-700 transition-all" />
-            <p className={`${activePage === "LogOut" && "text-red-600"}`}>
-              LogOut
-            </p>
+            LogOut
           </div>
         </div>
 
@@ -172,4 +173,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default React.memo(SideBar);
