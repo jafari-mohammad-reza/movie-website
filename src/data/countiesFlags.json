@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 1,
+        "name" : "english",
+        "imageUrl" : "/images/flags/englandFlag.png"
+    },
+    {
+        "id" : 2,
+        "name" : "french",
+        "imageUrl" : "/images/flags/frenchFlag.png"
+    },
+    {
+        "id" : 3,
+        "name" : "italy",
+        "imageUrl" : "/images/flags/italyFlag.png"
+    },
+    {
+        "id" : 4,
+        "name" : "spain",
+        "imageUrl" : "/images/flags/spainFlag.png"
+    },
+    {
+        "id" : 5,
+        "name" : "chinese",
+        "imageUrl" : "/images/flags/chinaFlag.png"
+    },
+    {
+        "id" : 6,
+        "name" : "farsi",
+        "imageUrl" : "/images/flags/iranFlag.png"
+    }
+]

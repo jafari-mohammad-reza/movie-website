@@ -34,12 +34,6 @@
   height: 500px !important;
 }
 
-.switcher {
-  /* cursor-pointer transition-all  transform eas e-in-out duration-200 hover:scale-125 */
-  cursor: pointer;
-  transition: all 150ms ease-in-out;
-}
-
 .rowItem {
   background-position: center center !important ;
   background-size: cover !important;
@@ -47,6 +41,29 @@
   object-fit: cover !important;
   background-clip: border-box;
 }
-body {
-  scrollbar-color: red;
+
+.DarkGlassBackGround {
+  background: rgb(248, 249, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(248, 249, 255, 0.1);
+  backdrop-filter: blur(16.3px);
+  -webkit-backdrop-filter: blur(16.3px);
+}
+.GlassBackGround {
+  background: rgb(32, 33, 39 , 0.8);
+  border-radius: 20px;
+  box-shadow: 2px 5px 25px rgba(37, 37, 41, 0.822);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.NetFlixIcon {
+  @apply flex cursor-pointer text-2xl md:text-3xl lg:text-4xl text-red-700 font-extrabold;
+}
+.sideBarItem {
+  @apply flex font-bold  items-center    cursor-pointer  space-x-2;
+}
+
+.accountSettingBtn {
+  @apply bg-red-600 rounded-xl font-bold py-3.5 px-8 w-max m-3.5 hover:bg-red-800 transition duration-300;
 }

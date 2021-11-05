@@ -7,10 +7,11 @@ export const watchListSlicer = createSlice({
   initialState,
   reducers: {
     addToList: (state, action) => {
+      // if(console.log(state.list.index(action.payload.name)))
       state.list = [...state.list, action.payload];
     },
     removeFromList: (state, action) => {
-      state.list.pop(action.payload);
+      state.list = state.list.filter((movie) => movie.name !== action.payload.name   );
     },
   },
 });

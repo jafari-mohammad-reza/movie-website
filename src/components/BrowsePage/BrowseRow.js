@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { MdPlaylistAddCheck, MdDoNotDisturb } from "react-icons/md";
-import { addToList } from "../features/watchListSlicer";
+import { addToList } from "../../features/watchListSlicer";
 import { useDispatch } from "react-redux";
-import { stringify } from "postcss";
 const BrowseRow = ({ title, categoryUrl }) => {
   const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
@@ -22,13 +21,12 @@ const BrowseRow = ({ title, categoryUrl }) => {
       return request;
     };
     fetchRequest();
-  }, []);
+  }, [categoryUrl]);
   return (
     <>
-      {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold md:font-bold lg:font-extrabold  pt-10 pb-16 ">
-        {" "}
+      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold md:font-bold lg:font-extrabold  pt-10 pb-16 ">
         {title}
-      </h1> */}
+      </h1>
       <div className=" overflow-x-scroll overflow-y-hidden  ">
         <div className="flex w-max mb-2 ">
           {movies.map((movie) => {
@@ -42,7 +40,7 @@ const BrowseRow = ({ title, categoryUrl }) => {
                   }")`,
                 }}
               >
-                <div className="opacity-0 group-hover:opacity-100 backdrop-filter transition-all w-full h-full duration-600 rounded-xl  py-2.5 px-4 backdrop-blur-sm">
+                <div className="opacity-0 group-hover:opacity-100 backdrop-filter transition-all w-full h-full duration-300 rounded-xl  py-2.5 px-4 backdrop-blur-sm">
                   <h3 className="text-xl sm:text-2xl md:text-3xl text-center font-semibold  ">
                     {movie.name || movie.title}
                   </h3>

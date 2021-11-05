@@ -1,26 +1,23 @@
 import { Suspense, lazy } from "react";
 import requests from "../api/requests";
-import Slider from "../components/Slider";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function BrowsePage() {
-  const BrowseRow = lazy(() => import("../components/BrowseRow"));
-  const SuggestBanner = lazy(() => import("../components/SuggestBanner"));
+  const BrowseRow = lazy(() => import("../components/BrowsePage/BrowseRow"));
+  const SuggestBanner = lazy(() => import("../components/BrowsePage/SuggestBanner"));
   return (
-    <main className="w-full  px-16 py-24 overflow-y-scroll h-screen">
+    <main className="w-full  px-16 pb-28 pt-20 overflow-y-scroll h-screen">
       {/* //! movie information  */}
-      <Suspense fallback={`<div>loading...</div>`}>
+      <Suspense fallback={LoadingComponent}>
         <SuggestBanner />
 
         {/* //  categories */}
-        <Slider
-          children={
-            <BrowseRow
-              key={1}
-              title="Netflix Originals"
-              categoryUrl={requests.fetchNetflixOriginals}
-            />
-          }
-        />
+        
+          <BrowseRow
+            key={1}
+            title="Netflix Originals"
+            categoryUrl={requests.fetchNetflixOriginals}
+          />
         <BrowseRow
           key={2}
           title="Netflix Trending's"

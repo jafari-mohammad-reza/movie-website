@@ -1,14 +1,15 @@
 import React from "react";
-import { BsBell, BsBellFill, BsSearch } from "react-icons/bs";
+import { BsBell, BsSearch } from "react-icons/bs";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { RiMic2Line } from "react-icons/ri";
-import { AiFillMessage, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineMessage } from "react-icons/ai";
+import { Link } from "react-router-dom";
 function TopBar() {
-  const theme = localStorage.getItem('theme');
   return (
-    <div className="flex justify-between items-center sm:px-5  w-full  md:px-10">
-
-      <div className="flex items-center justify-center mx-auto sm:mx-0 space-x-3 md:space-x-6 lg:space-x-16">
+    <div
+      className={`flex   justify-between items-center py-5 sm:px-5  w-full  md:px-10`}
+    >
+      <div className="flex  items-center justify-center mx-auto sm:mx-0 space-x-3 md:space-x-6 lg:space-x-16">
         {/* //! next and prev button to change banner movie */}
         <div className="flex items-center justify-start space-x-5  md:space-x-7 text-xl md:text-2xl lg:text-3xl">
           <MdNavigateBefore className="cursor-pointer transform ease-in-out transition-all duration-200 hover:scale-150 " />
@@ -27,24 +28,18 @@ function TopBar() {
       </div>
 
       <div className=" hidden sm:flex  items-center justify-start sm:space-x-5 md:space-x-10 lg:space-x-16 text-xl md:text-2xl lg:text-3xl">
-        {theme === "dark" ? (
-          <>
-            <BsBell className=" cursor-pointer " />
-            <AiOutlineMessage className=" cursor-pointer" />
-          </>
-        ) : (
-          <>
-            <BsBellFill className=" cursor-pointer transform transition-all duration-500   " />
-            <AiFillMessage className="cursor-pointer" />
-          </>
-        )}
-        <div className="flex text-base cursor-pointer w-10  h-10 md:w-16 md:h-16 md:text-lg items-center justify-center space-x-2  ">
+        <BsBell className="cursor-pointer" />
+        <AiOutlineMessage className=" cursor-pointer" />
+        <Link
+          to="/settings/account"
+          className="flex text-base cursor-pointer w-10  h-10 md:w-16 md:h-16 md:text-lg items-center justify-center space-x-2  "
+        >
           <img
             className="rounded-full  border-2 p-2"
             src="https://www.bing.com/th/id/OIP.KodEEM5freDj16hH50aVXQAAAA?pid=ImgDet&rs=1"
             alt="user profile"
           />
-        </div>
+        </Link>
       </div>
     </div>
   );
