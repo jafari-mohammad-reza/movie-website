@@ -7,15 +7,22 @@ export const watchListSlicer = createSlice({
   initialState,
   reducers: {
     addToList: (state, action) => {
-      // if(console.log(state.list.index(action.payload.name)))
-      state.list = [...state.list, action.payload];
+      const existMovie = state.list.find(movie => movie.id === action.payload.id);
+      if (!existMovie) {
+        state.list = [...state.list, action.payload];
+      } else {
+        alert('this movie is already exist in your list')
+      }
     },
     removeFromList: (state, action) => {
-      state.list = state.list.filter((movie) => movie.name !== action.payload.name   );
+      state.list = state.list.filter((movie) => movie.name !== action.payload.name);
     },
+    filterByName: (state, action) => {
+
+    }
   },
 });
 
-export const { addToList, removeFromList } = watchListSlicer.actions;
+export const { addToList, removeFromList, filterByName } = watchListSlicer.actions;
 export const selectList = (state) => state.watchList.list;
 export default watchListSlicer.reducer;

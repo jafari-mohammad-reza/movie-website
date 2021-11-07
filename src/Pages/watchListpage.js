@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromList, selectList } from "../features/watchListSlicer";
-import { FaRegPlayCircle } from "react-icons/fa";
+import { filterByName, removeFromList, selectList } from "../features/watchListSlicer";
+import { FaFilter, FaRegPlayCircle } from "react-icons/fa";
 import { IoRemoveCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
+import { useState } from "react";
+import FilterBar from "../components/GlobalComponents/FilterBar";
 
 function WatchListPage() {
   const dispatch = useDispatch();
   const selector = useSelector(selectList);
+  const [searchBarValue, setSearchBarValue] = useState('')
+  const [showFilterBar, setShowFilterBar] = useState(false)
+  const ref = useRef();
+  const handleSearch = () => {
+  }
 
   return (
-    <div className="flex flex-col px-16 ">
+    <div className="flex flex-col py-7">
       {/* //? top bar*/}
+      <div className="relative flex items-center space-x-3 place-self-center  ">
+        <BsSearch className="absolute top-4 left-6 group-hover:text-red-600 transition-all duration-500 " />
+        <input
+          ref={ref}
+          type="search"
+          placeholder="Search..."
+          className="border-2 focus:border-red-600   transition-all duration-500 rounded-full outline-none bg-transparent py-2.5 px-9"
+          name={'searchBar'}
+          onChange={() => {
+            handleSearch()
+          }}
+        />
+        <FaFilter className="hover:text-red-600   focus:scale-75 transform transition-all duration-500  hover:scale-125 text-lg md:text-xl lg:text-2xl" onClick={() => setShowFilterBar(!showFilterBar)} />
+      </div>
+      {showFilterBar && (
+        <FilterBar />
+      )}
 
       <div className="flex flex-wrap items-center justify-evenly   w-full   pt-16  overflow-y-scroll h-screen">
         {selector.length >= 1 ? (
@@ -22,9 +47,8 @@ function WatchListPage() {
                   className="rowItem m-5  w-64 h-96  group rounded-xl  text-darkTheme-primaryColor "
                   key={movie.id}
                   style={{
-                    background: `url("https://image.tmdb.org/t/p/original/${
-                      movie.backdrop_path || movie.poster_path
-                    }")`,
+                    background: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie.poster_path
+                      }")`,
                   }}
                 >
                   <div className="flex flex-col opacity-0 group-hover:opacity-100 backdrop-filter transition-all w-full h-full duration-600 rounded-xl  py-2.5 px-4 backdrop-blur-sm">

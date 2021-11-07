@@ -34,7 +34,7 @@ function App() {
             <Route path="/list" component={WatchListPage} />
             <Route path="/comingSoon" component={ComingSoonPage} />
             <Route path="/notification" component={NotificationsPage} />
-            <Route path="/Settings/" component={SettingPage} />
+            <Route path="/settings/" component={SettingPage} />
           </Suspense>
         </Switch>
       </div>

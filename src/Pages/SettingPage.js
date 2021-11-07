@@ -3,6 +3,7 @@ import { RiMenuUnfoldLine, RiMenuFoldFill } from "react-icons/ri";
 import { Route, Switch, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import LoadingComponent from "../components/LoadingComponent";
+import AccessibilitySettings from "../components/SettingPage/AccessibilitySettings";
 function SettingPage() {
   const AccountSetting = lazy(() =>
     import("../components/SettingPage/AccountSetting")
@@ -27,11 +28,11 @@ function SettingPage() {
   const ListItem = ({ title, path }) => {
     return (
       <Link
-        to={`/settings/${title === "Account" ? "" : title}`}
+        to={`/settings/${path}`}
         className="flex w-3 h-3 relative space-x-1.5 transition-all duration-300  items-center "
         // onClick={() => setActiveSection(title)}
       >
-        {activeSection === path && <PingAnimation />}
+        {activeSection ===  `/settings/${path}`   && <PingAnimation />}
         <li className="cursor-pointer">{title}</li>
       </Link>
     );
@@ -50,9 +51,9 @@ function SettingPage() {
           onClick={() => setShowMenu(false)}
         />
         <ul className="flex flex-col   space-y-10 text-lg font-semibold ">
-          <ListItem title={"Account"} path="/settings/" />
-          <ListItem title={"Language"} path="/settings/Language" />
-          <ListItem title={"Privacy"} path="/settings/Privacy" />
+          <ListItem title={"Account"} path="" />
+          <ListItem title={"Language"} path="Language" />
+          <ListItem title={"Accessibility's"} path="Accessibility" />
         </ul>
       </div>
       {/* Main Section */}
@@ -76,7 +77,11 @@ function SettingPage() {
               path={"/settings/language"}
               component={LanguageSetting}
             />
-          
+            <Route
+              exact
+              path={"/settings/Accessibility"}
+              component={AccessibilitySettings}
+            />
           </Suspense>
         </Switch>
       </div>

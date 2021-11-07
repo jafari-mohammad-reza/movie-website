@@ -50,7 +50,7 @@
   -webkit-backdrop-filter: blur(16.3px);
 }
 .GlassBackGround {
-  background: rgb(32, 33, 39 , 0.8);
+  background: rgb(32, 33, 39, 0.8);
   border-radius: 20px;
   box-shadow: 2px 5px 25px rgba(37, 37, 41, 0.822);
   backdrop-filter: blur(20px);
@@ -67,3 +67,6 @@
 .accountSettingBtn {
   @apply bg-red-600 rounded-xl font-bold py-3.5 px-8 w-max m-3.5 hover:bg-red-800 transition duration-300;
 }
+/* .customYearInput::-webkit-slider-runnable-track {
+  background: #e50419;
+} */
