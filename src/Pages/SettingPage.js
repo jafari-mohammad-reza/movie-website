@@ -30,9 +30,8 @@ function SettingPage() {
       <Link
         to={`/settings/${path}`}
         className="flex w-3 h-3 relative space-x-1.5 transition-all duration-300  items-center "
-        // onClick={() => setActiveSection(title)}
       >
-        {activeSection ===  `/settings/${path}`   && <PingAnimation />}
+        {activeSection === `/settings/${path}` && <PingAnimation />}
         <li className="cursor-pointer">{title}</li>
       </Link>
     );
@@ -41,9 +40,8 @@ function SettingPage() {
     <div className="w-full relative text-darkTheme-primaryColor px-6  md:space-x-5  lg:space-x-10 items-center justify-center space-y-10   overflow-y-scroll lg:overflow-y-hidden h-screen md:h-screen py-20 flex  flex-wrap">
       {/* Settings Menu */}
       <div
-        className={`self-center absolute ${
-          showMenu && "z-50"
-        } transition duration-700   top-28 mt-1.5 left-6 md:left-11 lg:left-0   lg:relative mr-10  w-3/6 lg:w-1/6  h-3/5 GlassBackGround 
+        className={`self-center absolute ${showMenu && "z-50"
+          } transition duration-700   top-28 mt-1.5 left-6 md:left-11 lg:left-0   lg:relative mr-10  w-3/6 lg:w-1/6  h-3/5 GlassBackGround 
               my-auto rounded-lg text-center  lg:py-10   px-6 `}
       >
         <RiMenuFoldFill

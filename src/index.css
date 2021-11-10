@@ -70,3 +70,14 @@
 /* .customYearInput::-webkit-slider-runnable-track {
   background: #e50419;
 } */
+
+.DarkThemTogglerBTn {
+  background-image: url(https://th.bing.com/th/id/OIP.9Uo0_ILbC1fa3CuOK-BI1QHaHW?w=224&h=204&c=7&r=0&o=5&dpr=1.25&pid=1.7);
+  background-position: center center;
+  background-size: contain;
+}
+.LightThemTogglerBTn {
+  background-image: url(https://th.bing.com/th/id/OIP.BRdxa41GBzK2rBZyMo9nTwHaHa?w=209&h=209&c=7&r=0&o=5&dpr=1.25&pid=1.7);
+  background-position: center center;
+  background-size: contain;
+}

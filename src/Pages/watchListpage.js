@@ -13,30 +13,26 @@ function WatchListPage() {
   const selector = useSelector(selectList);
   const [searchBarValue, setSearchBarValue] = useState('')
   const [showFilterBar, setShowFilterBar] = useState(false)
-  const ref = useRef();
-  const handleSearch = () => {
-  }
-
+  // useEffect(() => {
+  //   dispatch(filterByName(searchBarValue))
+  // }, [searchBarValue])
   return (
     <div className="flex flex-col py-7">
       {/* //? top bar*/}
       <div className="relative flex items-center space-x-3 place-self-center  ">
-        <BsSearch className="absolute top-4 left-6 group-hover:text-red-600 transition-all duration-500 " />
+        <BsSearch onClick={() => dispatch(filterByName(searchBarValue))} className="absolute cursor-pointer top-4 left-6 group-hover:text-red-600 transition-all duration-500 " />
         <input
-          ref={ref}
           type="search"
           placeholder="Search..."
           className="border-2 focus:border-red-600   transition-all duration-500 rounded-full outline-none bg-transparent py-2.5 px-9"
           name={'searchBar'}
-          onChange={() => {
-            handleSearch()
+          onChange={(e) => {
+            setSearchBarValue(e.currentTarget.value)
           }}
         />
-        <FaFilter className="hover:text-red-600   focus:scale-75 transform transition-all duration-500  hover:scale-125 text-lg md:text-xl lg:text-2xl" onClick={() => setShowFilterBar(!showFilterBar)} />
+        <FaFilter className="hover:text-red-600 cursor-pointer   focus:scale-75 transform transition-all duration-500  hover:scale-125 text-lg md:text-xl lg:text-2xl" onClick={() => setShowFilterBar(!showFilterBar)} />
       </div>
-      {showFilterBar && (
-        <FilterBar />
-      )}
+      <FilterBar isShown={showFilterBar} />
 
       <div className="flex flex-wrap items-center justify-evenly   w-full   pt-16  overflow-y-scroll h-screen">
         {selector.length >= 1 ? (

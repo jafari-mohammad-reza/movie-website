@@ -9,12 +9,8 @@ function TopBar() {
     <div
       className={`flex   justify-between items-center py-5 sm:px-5  w-full  md:px-10`}
     >
-      <div className="flex  items-center justify-center mx-auto sm:mx-0 space-x-3 md:space-x-6 lg:space-x-16">
+      <div className="flex  items-center px-16 justify-center mx-auto sm:mx-0 space-x-3 md:space-x-6 lg:space-x-16">
         {/* //! next and prev button to change banner movie */}
-        <div className="flex items-center justify-start space-x-5  md:space-x-7 text-xl md:text-2xl lg:text-3xl">
-          <MdNavigateBefore className="cursor-pointer transform ease-in-out transition-all duration-200 hover:scale-150 " />
-          <MdNavigateNext className="cursor-pointer transform ease-in-out transition-all duration-200 hover:scale-150 " />
-        </div>
         {/* //! for search bar << it should be responsive too >>  */}
         <div className="relative flex  items-center   justify-start">
           <BsSearch className="absolute left-3  " />

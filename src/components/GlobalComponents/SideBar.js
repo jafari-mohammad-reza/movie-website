@@ -6,6 +6,7 @@ import { BsLightbulb, BsLightbulbFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { selectNotification } from "../../features/notificationsSlicer";
 import { selectList } from "../../features/watchListSlicer";
+import ThemeToggler from "./ThemeToggler";
 function SideBar() {
   const NotificationSelector = useSelector(selectNotification);
   const WatchListSelector = useSelector(selectList);
@@ -39,11 +40,10 @@ function SideBar() {
       />
 
       <div
-        className={` fixed md:static  ${
-          showBar
-            ? "bottom-0 w-2/4 bg-gray-500  bg-opacity-75  h-full z-50 px-6"
-            : "bottom-full"
-        } transition-all   md:flex   text-sm sm:text-base md:text-lg lg:text-xl flex-col items-start py-5   justify-center  space-y-5 md:px-5 lg:px-10 `}
+        className={` fixed md:static  ${showBar
+          ? "bottom-0 w-2/4 bg-gray-500  bg-opacity-75  h-full z-50 px-6"
+          : "bottom-full"
+          } transition-all   md:flex   text-sm sm:text-base md:text-lg lg:text-xl flex-col items-start py-5   justify-center  space-y-5 md:px-5 lg:px-10 `}
       >
         <a href="/" className="NetFlixIcon">
           NetFlix
@@ -75,18 +75,7 @@ function SideBar() {
           <SideBarItem title={"Logout"} path={"/logout"} />
         </div>
 
-        <div
-          className="text-2xl bg-red-600 w-3/6    rounded-2xl py-3  flex justify-center place-self-auto   "
-          onClick={() => {
-            setCurrentTheme(colorTheme);
-          }}
-        >
-          {colorTheme === "light" ? (
-            <BsLightbulb className="switcher  transform hover:scale-150" />
-          ) : (
-            <BsLightbulbFill className="switcher transform hover:scale-150" />
-          )}
-        </div>
+        <ThemeToggler />
       </div>
     </>
   );

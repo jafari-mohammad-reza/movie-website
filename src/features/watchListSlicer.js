@@ -18,8 +18,11 @@ export const watchListSlicer = createSlice({
       state.list = state.list.filter((movie) => movie.name !== action.payload.name);
     },
     filterByName: (state, action) => {
-
+      const movieName = (action.payload);
+      state.list = state.list.filter(movie => movie.name === movieName || movie.title === movieName)
     }
+    //! todo : add category to each movie in browse page 
+
   },
 });
 

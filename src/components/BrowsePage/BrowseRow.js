@@ -35,9 +35,8 @@ const BrowseRow = ({ title, categoryUrl }) => {
                 className="rowItem w-64 h-96 mr-5  group rounded-xl  text-darkTheme-primaryColor "
                 key={movie.id}
                 style={{
-                  background: `url("https://image.tmdb.org/t/p/original/${
-                    movie.backdrop_path || movie.poster_path
-                  }")`,
+                  background: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path
+                    }")`,
                 }}
               >
                 <div className="opacity-0 group-hover:opacity-100 backdrop-filter transition-all w-full h-full duration-300 rounded-xl  py-2.5 px-4 backdrop-blur-sm">
