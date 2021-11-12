@@ -1,22 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { addNotification } from '../features/notificationsSlicer'
 
 function ComingSoonPage() {
-    const dispatch = useDispatch()
-const handleClick = () => {
-    const notif = {
-        id:1,
-        title : "first notfi",
-        text : "first notiif text",
-        isRead :  false
-    }
-    dispatch(addNotification(notif))
-    
-}
     return (
-        <div>
-            <button onClick={() => handleClick()}>click</button>        
+        <div className=' h-screen w-full flex items-center justify-center '>
+                <h1 className='text-lg sm:text-xl md:text-5xl lg:text-9xl font-bold text-red-600 font-mono'>Coming Soon</h1>
         </div>
     )
 }
