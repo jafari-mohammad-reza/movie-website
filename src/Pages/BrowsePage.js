@@ -1,10 +1,12 @@
-import { Suspense, lazy } from "react";
-import requests from "../api/requests";
-import LoadingComponent from "../components/LoadingComponent";
+import { Suspense, lazy } from 'react'
+import requests from '../api/requests'
+import LoadingComponent from '../components/LoadingComponent'
 
 export default function BrowsePage() {
-  const BrowseRow = lazy(() => import("../components/BrowsePage/BrowseRow"));
-  const SuggestBanner = lazy(() => import("../components/BrowsePage/SuggestBanner"));
+  const BrowseRow = lazy(() => import('../components/BrowsePage/BrowseRow'))
+  const SuggestBanner = lazy(() =>
+    import('../components/BrowsePage/SuggestBanner'),
+  )
   return (
     <main className="w-full  px-16 pb-28 pt-20 overflow-y-scroll h-screen">
       {/* //! movie information  */}
@@ -12,12 +14,12 @@ export default function BrowsePage() {
         <SuggestBanner />
 
         {/* //  categories */}
-        
-          <BrowseRow
-            key={1}
-            title="Netflix Originals"
-            categoryUrl={requests.fetchNetflixOriginals}
-          />
+
+        <BrowseRow
+          key={1}
+          title="Netflix Originals"
+          categoryUrl={requests.fetchNetflixOriginals}
+        />
         <BrowseRow
           key={2}
           title="Netflix Trending's"
@@ -50,5 +52,5 @@ export default function BrowsePage() {
         />
       </Suspense>
     </main>
-  );
+  )
 }
