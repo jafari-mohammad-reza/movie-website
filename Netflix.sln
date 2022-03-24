@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.API", "Netflix.API\Netflix.API.csproj", "{BBE47471-23A7-4849-9D1B-79CE5D177CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Application", "Netflix.Application\Netflix.Application.csproj", "{9861BF70-85C7-41A6-A86F-58071EC4808F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Domain", "Netflix.Domain\Netflix.Domain.csproj", "{0B112E35-841E-4A74-8AC7-94EA083C4EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrustructure", "Netflix.Infrustructure\Netflix.Infrustructure.csproj", "{F9D46469-F668-4093-8F79-5F4F01893227}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBE47471-23A7-4849-9D1B-79CE5D177CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE47471-23A7-4849-9D1B-79CE5D177CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE47471-23A7-4849-9D1B-79CE5D177CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE47471-23A7-4849-9D1B-79CE5D177CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9861BF70-85C7-41A6-A86F-58071EC4808F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9861BF70-85C7-41A6-A86F-58071EC4808F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9861BF70-85C7-41A6-A86F-58071EC4808F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9861BF70-85C7-41A6-A86F-58071EC4808F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B112E35-841E-4A74-8AC7-94EA083C4EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B112E35-841E-4A74-8AC7-94EA083C4EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B112E35-841E-4A74-8AC7-94EA083C4EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B112E35-841E-4A74-8AC7-94EA083C4EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D46469-F668-4093-8F79-5F4F01893227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D46469-F668-4093-8F79-5F4F01893227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D46469-F668-4093-8F79-5F4F01893227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D46469-F668-4093-8F79-5F4F01893227}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
