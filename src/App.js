@@ -4,10 +4,7 @@ import LoadingComponent from "./components/LoadingComponent";
 import SideBar from "./components/GlobalComponents/SideBar";
 import TopBar from "./components/GlobalComponents/TopBar";
 import ComingSoonPage from "./Pages/ComingSoonPage";
-import NotificationsPage from "../src/components/GlobalComponents/NotificationsPage";
-import NotFound from "./Pages/NotFound";
-import SignIn from "./components/AccountComponents/SignIn";
-import SignUp from "./components/AccountComponents/SignUp";
+import  NotificationsPage from '../src/components/GlobalComponents/NotificationsPage'
 function App() {
   const BrowsePage = lazy(() => import("./Pages/BrowsePage"));
   const WatchListPage = lazy(() => import("./Pages/watchListpage"));
@@ -38,9 +35,6 @@ function App() {
             <Route path="/comingSoon" component={ComingSoonPage} />
             <Route path="/notification" component={NotificationsPage} />
             <Route path="/settings/" component={SettingPage} />
-            {/* <Route path="/signIn/" component={SignIn} />
-            <Route path="/SignOut/" component={SignUp} /> */}
-            <Route path={"*"} component={NotFound} />
           </Suspense>
         </Switch>
       </div>
