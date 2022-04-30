@@ -1,9 +1,9 @@
-import React from 'react'
-import { BsBell, BsSearch } from 'react-icons/bs'
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
-import { RiMic2Line } from 'react-icons/ri'
-import { AiOutlineMessage } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { BsBell, BsSearch } from "react-icons/bs";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { RiMic2Line } from "react-icons/ri";
+import { AiOutlineMessage } from "react-icons/ai";
+import { Link } from "react-router-dom";
 function TopBar() {
   return (
     <div
@@ -24,12 +24,10 @@ function TopBar() {
       </div>
 
       <div className=" hidden sm:flex  items-center justify-start sm:space-x-5 md:space-x-10 lg:space-x-16 text-xl md:text-2xl lg:text-3xl">
-        <Link to={'/notification'}>
-          <BsBell className="cursor-pointer" />
-        </Link>
+        <BsBell className="cursor-pointer" />
         <AiOutlineMessage className=" cursor-pointer" />
         <Link
-          to="/settings/"
+          to="/settings/account"
           className="flex text-base cursor-pointer w-10  h-10 md:w-16 md:h-16 md:text-lg items-center justify-center space-x-2  "
         >
           <img
@@ -40,7 +38,7 @@ function TopBar() {
         </Link>
       </div>
     </div>
-  )
+  );
 }
 
-export default TopBar
+export default TopBar;
