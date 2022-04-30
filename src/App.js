@@ -1,14 +1,15 @@
-import React, { lazy, Suspense } from "react";
-import { Route, Switch } from "react-router";
-import LoadingComponent from "./components/LoadingComponent";
-import SideBar from "./components/GlobalComponents/SideBar";
-import TopBar from "./components/GlobalComponents/TopBar";
-import ComingSoonPage from "./Pages/ComingSoonPage";
-import  NotificationsPage from '../src/components/GlobalComponents/NotificationsPage'
+import React, { lazy, Suspense } from 'react'
+import { Route, Switch } from 'react-router'
+import LoadingComponent from './components/LoadingComponent'
+import SideBar from './components/GlobalComponents/SideBar'
+import TopBar from './components/GlobalComponents/TopBar'
+import ComingSoonPage from './Pages/ComingSoonPage'
+import NotificationsPage from '../src/components/GlobalComponents/NotificationsPage'
+import NotFound from './Pages/NotFound'
 function App() {
-  const BrowsePage = lazy(() => import("./Pages/BrowsePage"));
-  const WatchListPage = lazy(() => import("./Pages/watchListpage"));
-  const SettingPage = lazy(() => import("./Pages/SettingPage"));
+  const BrowsePage = lazy(() => import('./Pages/BrowsePage'))
+  const WatchListPage = lazy(() => import('./Pages/watchListpage'))
+  const SettingPage = lazy(() => import('./Pages/SettingPage'))
   return (
     <div className="grid grid-cols-5 overflow-hidden  bg-lightTheme-primaryBackGround  h-screen     dark:bg-darkTheme-primaryBackGround  text-lightTheme-primaryColor dark:text-darkTheme-primaryColor">
       {/*//! side bar */}
@@ -28,18 +29,19 @@ function App() {
                     <TopBar />
                     <BrowsePage />
                   </>
-                );
+                )
               }}
             />
             <Route path="/list" component={WatchListPage} />
             <Route path="/comingSoon" component={ComingSoonPage} />
             <Route path="/notification" component={NotificationsPage} />
             <Route path="/settings/" component={SettingPage} />
+            <Route path={'*'} component={NotFound} />
           </Suspense>
         </Switch>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
